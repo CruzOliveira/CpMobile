@@ -1,16 +1,17 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, TextInput,  StyleSheet, ImageBackground, Image} from 'react-native';
-import {RadioButton} from 'react-native-paper'
+import {RadioButton } from 'react-native-paper'
 
 const CadastrarScreen = ({navigation}) =>{
-    const [masculino, setMasculino] = useState(false);
-    const [feminino, setFeminino] = useState(false);
+    const [value, setValue] = React.useState('first');
+
+
 
     return(
-        <View>
+        <View >
             <ImageBackground 
-            source={require('../img/Fundo.png')}
-            style={styles.backGround}>
+             source={require('../img/Fundo.png')}
+             style={styles.backGround}>
                 <Image source={require('../img/Logo.png')}
                 style={styles.logo}/>
                 <Text style={styles.title}>Cadastrar</Text>
@@ -43,26 +44,28 @@ const CadastrarScreen = ({navigation}) =>{
                     placeholderTextColor='#C4C4C4'
                     />
                 </View>
-                <Text>Sexo:</Text>
-                <RadioButton
-                value="second"
-                status={ checked === 'second' ? 'checked' : 'unchecked' }
-                onPress={() => setChecked('second')}/>
-                <RadioButton
-                value="second"
-                status={ checked === 'second' ? 'checked' : 'unchecked' }
-                onPress={() => setChecked('second')}/>
-
-
-                <TouchableOpacity 
-                style={styles.button}>
-                    <Text style={styles.titleBt}>Cadastrar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                style={styles.button}
-                onPress={ () => navigation.replace('Login')}>
-                    <Text style={styles.titleBt}>Voltar</Text>
-                </TouchableOpacity>
+                <Text style={styles.textwhit}>Sexo:</Text>
+                <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
+                 <View>
+                     <Text style={styles.textwhits}>First</Text>
+                     <RadioButton value="first" />
+                 </View>
+                 <View>
+                     <Text>Second</Text>
+                     <RadioButton value="second" />
+                 </View>
+                </RadioButton.Group>
+                
+                <View style={styles.buttonS}>
+                 <TouchableOpacity>
+                    <Text style={styles.buttonSTitle}>Cadastrar</Text>
+                 </TouchableOpacity>
+                 <TouchableOpacity 
+                    style={styles.button2}
+                    onPress={ () => navigation.replace('Login')}>
+                    <Text style={styles.buttonSTitle}>Voltar</Text>
+                 </TouchableOpacity>
+                </View>
 
             </ImageBackground>
         </View>
@@ -106,4 +109,27 @@ const styles = StyleSheet.create({
         fontSize: 18,
     
     },
+    buttonS:{
+        flexDirection:'row',
+        marginTop:30,
+        marginHorizontal:20,
+       
+    },
+    
+    buttonSTitle:{
+        color:'#C4C4C4',
+        fontSize:18,
+    },
+    button2:{
+        marginLeft: 190,
+    },
+    textwhit:{
+        fontSize: 20,
+        color:'#C4C4C4',       
+    },
+    textwhits:{
+        fontSize: 20,
+        color:'#C4C4C4',     
+         
+    }
 });
