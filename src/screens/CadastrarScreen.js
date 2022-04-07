@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, TextInput,  StyleSheet, ImageBackground, Image} from 'react-native';
-import { RadioButton } from 'react-native-paper';
+import {RadioButton} from 'react-native-paper'
 
 const CadastrarScreen = ({navigation}) =>{
     const [masculino, setMasculino] = useState(false);
@@ -66,7 +66,8 @@ const CadastrarScreen = ({navigation}) =>{
 
             </ImageBackground>
         </View>
-)};
+)}; 
+export default CadastrarScreen;
 const styles = StyleSheet.create({
     cadastrar:{
         flex: 1,

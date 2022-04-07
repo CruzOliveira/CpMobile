@@ -43,6 +43,8 @@ const LoginScreen = ({navigation}) =>{
     </View>
 
 )};
+export default LoginScreen
+
 const styles = StyleSheet.create({
 login:{
     flex: 1
