@@ -3,13 +3,19 @@ import {ScrollView, View, Text, TouchableOpacity, TextInput,  StyleSheet, ImageB
 import {RadioButton, Checkbox } from 'react-native-paper'
 
 const CadastrarScreen = ({navigation}) =>{
+
     const [value, setValue] = React.useState('first');
     const [checked, setChecked] = React.useState(false);
     const [checked2, setChecked2] = React.useState(false);
     const [username, setUsername] = React.useState();
     const [nome, setNome] = React.useState();
     const [senha, setSenha] = React.useState();
+    const [masculino, serMasculino] = React.useState();
+    const [feminino, serFeminino] = React.useState();
 
+    function imprimir(){
+        alert("Username: " + username +'-'+ " Nome Completo" + nome + '-' +" Senha: " + senha + '-' + " Sexo: " + value);
+    };
 
     return(
         <View >
@@ -23,6 +29,8 @@ const CadastrarScreen = ({navigation}) =>{
 
                     <View style={styles.inputArea}>
                         <TextInput
+                        value={username}
+                        onChangeText={ (username) => setUsername(username)}
                         style={styles.input}
                         placeholder='Username'
                         placeholderTextColor='#C4C4C4'
@@ -30,6 +38,8 @@ const CadastrarScreen = ({navigation}) =>{
                     </View>
                     <View style={styles.inputArea}>
                         <TextInput
+                        value={nome}
+                        onChangeText={ (nome) => setNome(nome)}
                         style={styles.input}
                         placeholder='Nome completo'
                         placeholderTextColor='#C4C4C4'
@@ -37,6 +47,8 @@ const CadastrarScreen = ({navigation}) =>{
                     </View>
                     <View style={styles.inputArea}>
                         <TextInput
+                        value={senha}
+                        onChangeText={ (senha) => setSenha(senha)}
                         style={styles.input}
                         placeholder='Senha'
                         placeholderTextColor='#C4C4C4'
@@ -53,11 +65,11 @@ const CadastrarScreen = ({navigation}) =>{
                     <View style={styles.caixas}>
                         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
                         <View style={styles.caixaS}>
-                            <RadioButton value="first" />
+                            <RadioButton value="masculino" />
                             <Text style={styles.textwhits}>Masculino</Text>
                         </View>
                         <View style={styles.caixaS}>
-                            <RadioButton value="second" />
+                            <RadioButton value="feminino" />
                             <Text style={styles.textwhits}>Feminino</Text>
                         </View>
                         </RadioButton.Group>
@@ -82,7 +94,8 @@ const CadastrarScreen = ({navigation}) =>{
                         /><Text style={styles.textTermo}>Aceito receber e-mail</Text>
                     </View>
                     <View style={styles.buttonS}>
-                        <TouchableOpacity 
+                        <TouchableOpacity
+                        onPress={imprimir}
                         style={styles.button}>
                         <Text style={styles.titleBt}>Cadastrar</Text>
                         </TouchableOpacity>
